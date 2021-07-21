@@ -13,6 +13,8 @@ use App\Core\Request;
  */
 class AuthController extends Controller
 {
+    // public string $layout = 'auth'; // Use layouts auth.php
+
     public function register(Request $request)
     {
         if($request->isPost()) {
