@@ -2,32 +2,34 @@
 
 namespace App\Controllers;
 
-use App;
-use App\Core\Application;
+use App\Core\Controller;
+use App\Core\Request;
 
 /**
- * Class Application
+ * Class SiteController
  * 
  * @author Quan Vu <info@quanvu.net>
  * @package App\Controller
  */
-class SiteController
+class SiteController extends Controller
 {
     public function home()
     {
         $params = [
             'title' => 'PHP MVC Framework',
         ];
-        return Application::$app->router->renderView('home', $params);
+        return $this->render('home', $params);
     }
 
     public function contact()
     {
-        return Application::$app->router->renderView('contact');
+        return $this->render('contact');
     }
 
-    public function storeContact()
+    public function storeContact(Request $request)
     {
-        return 'Handling submitting data';
+        $body = $request->getBody();
+        var_dump($body);
+        return 'Handling contact data';
     }
 }
