@@ -15,3 +15,9 @@ composer update
 cd public
 php -S localhost:8080
 ```
+
+Create database
+
+```sql
+CREATE SCHEMA `php_mvc_framework` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ;
+```

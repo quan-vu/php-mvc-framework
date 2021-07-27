@@ -9,8 +9,21 @@ use App\Controllers\{
 };
 
 $rootPath = dirname(__DIR__);
+$dotenv = Dotenv\Dotenv::createImmutable($rootPath);
+$dotenv->load();
 
-$app = new Application($rootPath);
+ini_set('display_errors', $_ENV['APP_DEBUG'] ?? true);
+error_reporting(E_ALL);
+
+$config = [
+    'db' => [
+        'dsn' => $_ENV['DB_DSN'],
+        'user' => $_ENV['DB_USER'],
+        'password' => $_ENV['DB_PASSWORD'],
+    ],
+];
+
+$app = new Application($rootPath, $config);
 
 $app->router->get('/', [SiteController::class, 'home']);
 
